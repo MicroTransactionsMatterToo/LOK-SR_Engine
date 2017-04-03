@@ -1,0 +1,9 @@
+// Copyrgith Ennis Massey 3/04/17
+//
+// Created by Ennis Massey on 3/04/17.
+//
+
+#ifndef KAINRECONSTRUCTION_INSTINCG2_H
+#define KAINRECONSTRUCTION_INSTINCG2_H
+
+#endif //KAINRECONSTRUCTION_INSTINCG2_H
