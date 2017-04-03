@@ -31,6 +31,13 @@ typedef struct _Position {
     short z;
 } Position;
 
+typedef struct _Rotation {
+    short x;
+    short y;
+    short z;
+    short pad;
+} Rotation;
+
 /*!
  * Geometric normal
  */
@@ -119,21 +126,6 @@ typedef struct _Sphere_noSq {
     struct _Position position;
     unsigned short radius;
 } Sphere_noSq;
-
-typedef struct _CameraKey {
-    short x;
-    short y;
-    short z;
-    short id;
-    short rx;
-    short ry;
-    short rz;
-    short flags;
-    short tx;
-    short ty;
-    short tz;
-    short pad;
-} CameraKey;
 
 typedef struct _Model {
     long numVertices;
@@ -246,6 +238,46 @@ typedef struct _Segment {
     short parent;
     struct _HInfo* hInfo;
 } Segment;
+
+typedef struct _TFace {
+    struct _Face face;
+    unsigned char attr;
+    signed char sortPush;
+    unsigned short normal;
+    unsigned short textoff;
+} TFace;
+
+typedef struct _TVertex {
+    struct _Vertex vertex;
+    unsigned short rgb15;
+    unsigned char r0;
+    unsigned char g0;
+    unsigned char b0;
+    unsigned char code;
+} TVertex;
+
+typedef struct Vector3d {
+    short vx;
+    short vy;
+    short vz;
+    short pad1;
+    short errorx;
+    short errory;
+    short errorz;
+    short pad2
+} Vector3d;
+
+typedef struct Rotation3d {
+    short vx;
+    short vy;
+    short vz;
+    short pad1;
+    short errorx;
+    short errory;
+    short errorz;
+    short pad2;
+    long attribute;
+} Rotation3d;
 
 
 

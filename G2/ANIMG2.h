@@ -8,6 +8,35 @@
 #include <zconf.h>
 #include "QUATG2.h";
 #include "../DRAW.h";
+#include "../INSTANCE.h"
+#include "../SPLINE.h"
+#include "../SIGNAL.h"
+
+typedef struct TextureFT3 {
+    unsigned char u0;
+    unsigned char v0;
+    unsigned short clut;
+    unsigned char u1;
+    unsigned char v1;
+    unsigned short tpage;
+    unsigned char u2;
+    unsigned char v2;
+    unsigned short attr;
+} TextureFT3;
+
+typedef struct TextureMT3 {
+    unsigned char u0;
+    unsigned char v0;
+    unsigned short clut;
+    unsigned char u1;
+    unsigned char v1;
+    unsigned short tpage;
+    unsigned char u2;
+    unsigned char v2;
+    signed char pad1;
+    signed char sortPush;
+    long color;
+} TextureMT3;
 
 typedef struct _G2AnimQuatInfo_Type {
     struct _G2Quat_Type srcQuat;
@@ -97,7 +126,74 @@ typedef struct _G2Anim_Type {
     struct _G2AnimSection_Type section;
 } G2Anim_Type;
 
+typedef struct AniTexInfo {
+    struct TextureMT3* texture;
+    long numFrames;
+    long speed;
+} AniTexInfo;
 
+typedef struct DrMoveAniTexSrcInfo {
+    short pixSrcX;
+    short pixSrcY;
+    short clutSrcX;
+    short clutSrcY;
+} DrMoveAniTexSrcInfo;
+
+typedef struct DrMoveAniTexDestInfo {
+    short pixDstX;
+    short pixDstY;
+    short pixW;
+    short pixH;
+    short clutDstX;
+    short clutDstY;
+    short clutW;
+    short clutH;
+    short pixCurrentX;
+    short pixCurrentY;
+    short clutCurrentX;
+    short clutCurrentY;
+    long numFrames;
+    long speed;
+    struct DrMoveAniTexSrcInfo frame;
+} DrMoveAniTexDestInfo;
+
+typedef struct DrMoveAniTex {
+    long numAniTextues;
+    struct DrMoveAniTexDestInfo* aniTextInfo;
+} DrMoveAniTex;
+
+typedef struct Intro {
+    char name[];
+    long intronum;
+    long UniqueID;
+    struct _Rotation rotation;
+    struct _Position position;
+    short maxRad;
+    long maxRadSq;
+    long flags;
+    va_list data;
+    struct _Instance* instance;
+    struct _MultiSpline* multiSpline;
+    va_list dsignal;
+    short specturalLightGroup;
+    short meshColor;
+    struct _Position spectralPosition;
+    short spad;
+} Intro;
+
+typedef struct _Terrain {
+    short UnitChangeFlags;
+    short spad;
+    long lpad2;
+    long numIntros;
+    struct Intro* introList;
+    long numVertices;
+    long numFaces;
+    long numNormals;
+    struct _TVertex* vertexlist;
+    struct _TFace* faceList;
+    struct _Normal* normalList;
+};
 
 #define KAINRECONSTRUCTION_ANIMG2_H
 

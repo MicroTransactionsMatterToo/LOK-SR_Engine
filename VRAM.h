@@ -6,4 +6,11 @@
 #ifndef KAINRECONSTRUCTION_VRAM_H
 #define KAINRECONSTRUCTION_VRAM_H
 
+typedef struct _VramSize {
+    short x;
+    short y;
+    short w;
+    short h;
+} VramSize;
+
 #endif //KAINRECONSTRUCTION_VRAM_H
