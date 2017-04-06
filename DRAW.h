@@ -104,17 +104,6 @@ typedef struct _PVertex {
     long otz;
 } PVertex;
 
-typedef struct _VertexPool {
-    struct _PVertex vertex[528];
-    struct CVECTOR color[528];
-} VertexPool;
-
-typedef struct _PrimPool {
-    long numPrims;
-    unsigned long* nextPrim;
-    unsigned long* lastPrim;
-    unsigned long prim[24000];
-} PrimPool;
 
 typedef struct _Sphere {
     struct _Position position;
@@ -264,7 +253,7 @@ typedef struct Vector3d {
     short errorx;
     short errory;
     short errorz;
-    short pad2
+    short pad2;
 } Vector3d;
 
 typedef struct Rotation3d {
@@ -278,6 +267,12 @@ typedef struct Rotation3d {
     short pad2;
     long attribute;
 } Rotation3d;
+
+typedef struct _Vector {
+    long x;
+    long y;
+    long z;
+} Vector;
 
 
 

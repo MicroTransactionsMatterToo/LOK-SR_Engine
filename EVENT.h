@@ -28,5 +28,14 @@ typedef struct EventPointers {
     Event* eventInstances[];
 };
 
+struct __Event {
+    int ID;
+    int Data;
+};
+typedef struct __MessageQueue {
+    int Head;
+    int Tail;
+};
+
 
 #endif //KAINRECONSTRUCTION_EVENT_H

@@ -114,4 +114,13 @@ struct DR_ENV {
 	unsigned long code[];
 };
 
+struct P_TAG {
+    signed char addr;
+    signed char len;
+    unsigned char r0;
+    unsigned char g0;
+    unsigned char b0;
+    unsigned char code;
+};
+
 #endif 

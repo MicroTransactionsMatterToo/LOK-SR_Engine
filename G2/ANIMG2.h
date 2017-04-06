@@ -58,8 +58,10 @@ typedef struct _G2AnimInterpStateBlock_Type {
 } G2AnimInterpStateBlock_Type;
 
 typedef struct _G2AnimInterpInfo_Type {
-    short keyData;
-    short index;
+    signed short duration;
+    signed short targetTime;
+    G2AnimAlphaTable_Type* alphaTable;
+    G2AnimInterpStateBlock_Type* stateBlockList;
 } G2AnimInterpInfo_Type;
 
 typedef struct _G2AnimChanStatus_Type {
@@ -126,6 +128,71 @@ typedef struct _G2Anim_Type {
     struct _G2AnimSection_Type section;
 } G2Anim_Type;
 
+typedef struct _G2EulerAngles_Type {
+    signed short x;
+    signed short y;
+    signed short z;
+    signed short order;
+} G2EulerAngles_Type;
+
+struct _G2AnimController_Type {
+    unsigned short next;
+    unsigned char type;
+    unsigned char segNumber;
+    void* callbackData;
+    unsigned short flags;
+    signed short duration;
+    signed short elapsedTime;
+    struct _G2AnimAlphaTable_Type* alphaTable;
+};
+
+struct _G2AnimSegKeyflagInfo_Type {
+    unsigned long* stream;
+    unsigned long flags;
+    unsigned int bitCount;
+};
+struct _G2AnimDecompressChannelInfo_Type {
+    struct _G2AnimKeylist_Type* keylist;
+    void* chanData;
+    unsigned int storedKey;
+    unsigned int targetKey;
+};
+struct _G2AnimSegValue_Type {
+    struct _G2SVector3_Type scale;
+    unsigned short pad;
+    struct _G2SVector3_Type trans;
+    unsigned short bIsQuat;
+};
+struct _G2AnimChanStatusBlockPool_Type {
+    unsigned short blockSize;
+    unsigned short stackTop;
+    unsigned short stackSize;
+    void* stack;
+    struct _G2AnimChanStatusBlock_Type* blockPool;
+};
+struct _G2AnimControllerPool_Type {
+    unsigned short blockSize;
+    unsigned short stackTop;
+    unsigned short stackSize;
+    void* stack;
+    struct _G2AnimController_Type* blockPool;
+};
+struct _G2AnimInterpStateBlockPool_Type {
+    unsigned short blockSize;
+    unsigned short stackTop;
+    unsigned short stackSize;
+    void* stack;
+    struct _G2AnimInterpStateBlock_Type* blockPool;
+};
+
+struct _G2PoolMemPool_Type {
+    unsigned short blockSize;
+    unsigned short stackTop;
+    unsigned short stackSize;
+    void* stack;
+    struct _G2PoolMem_Type* blockPool;
+};
+
 typedef struct AniTexInfo {
     struct TextureMT3* texture;
     long numFrames;
@@ -159,7 +226,7 @@ typedef struct DrMoveAniTexDestInfo {
 
 typedef struct DrMoveAniTex {
     long numAniTextues;
-    struct DrMoveAniTexDestInfo* aniTextInfo;
+    struct DrMoveAniTexDestInfo* aniTexInfo;
 } DrMoveAniTex;
 
 typedef struct Intro {

@@ -52,8 +52,8 @@ typedef struct _Instance {
 	long flags2;
     struct Object* object;
     struct Intro* intro;
-    va_list data;
-    va_list introData;
+    void* data;
+    void* introData;
     struct _Instance* parent;
     long introNum;
     long birthStreamUnitID;
@@ -62,7 +62,7 @@ typedef struct _Instance {
     struct MATRIX* matrix;
     struct MATRIX* oldMatrix;
     struct SoundInstance soundInstanceTbl[];
-    unsigned long macCheckDistance;
+    unsigned long maxCheckDistance;
     unsigned long checkMask;
     struct _Position position;
     unsigned char lightGroup;
@@ -78,18 +78,18 @@ typedef struct _Instance {
     struct MATRIX relativeMatrix;
     struct _TFace* tface;
     struct _TFace* oldTFace;
-    va_list tfacelevel;
-    va_list collideInfo;
+    void* tfaceLevel;
+    void* collideInfo;
     long bspTree;
     short cachedTFace;
     short cachedBSPTree;
     struct _Normal oldWNormal;
     struct _Normal wNormal;
     struct _SVector offset;
-    va_list dsignal;
-    va_list shadow0;
-    va_list shadow1;
-    va_list extraLight;
+    void* dsignal;
+    void* shadow0;
+    void* shadow1;
+    void* extraLight;
     struct _Position extraLightDir;
     short extraLightScale;
     struct _HModel* hModelList;
@@ -98,7 +98,7 @@ typedef struct _Instance {
     void (*processFunc)(void);
     void (*collideFunc)(void);
     void (*additionalCollideFunc)(void);
-    va_list additionalDrawFunc;
+    void* additionalDrawFunc;
     int (*queryFunc)(void);
     void (*messageFunc)(void);
     struct _Position shadowPosition;
@@ -112,9 +112,9 @@ typedef struct _Instance {
     struct _Instance* LinkChild;
     struct _Instance* LinkSibling;
     long ParentLinkNode;
-    va_list InstanceState;
+    void* InstanceState;
     char introName[];
-    va_list extraData;
+    void* extraData;
     short constrictAngle;
     short petrifyValue;
     long xVel;
@@ -142,6 +142,7 @@ typedef struct _Instance {
     G2Bool_Enum rebuildCallback;
     short splineFlags;
     short targetFrame;
+    signed short clipBeg;
     short clipEnd;
     struct EventAliasCommandStruct {
         struct _Instance* hostInstance;
@@ -164,8 +165,31 @@ typedef struct InstanceSpline {
 };
 
 typedef struct InstanceObject {
-    _Instance* instance;
+    Instance* instance;
     long attribute;
 } InstanceObject;
+
+typedef struct _ObjectOwnerInfo {
+    long magicnum;
+    signed short animID;
+    char objectName[];
+} ObjectOwnerInfo;
+
+typedef struct ObjectAccess {
+    char * objectName;
+    void* object;
+} ObjectAccess;
+
+typedef struct ObjectFunc {
+    char * scriptName;
+    void (*initFunc)();
+    void (*processFunc)();
+    void (*collideFunc)();
+    int (*queryFunc)();
+    void (*messageFunc)();
+    void (*additionalCollideFunc)();
+    void (*relocateTuneFunc)();
+    void (*relocateInstObjFunc)();
+} ObjectFunc;
 
 #endif
