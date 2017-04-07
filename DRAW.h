@@ -274,6 +274,63 @@ typedef struct _Vector {
     long z;
 } Vector;
 
+struct BASIC_LINE_G2 {
+    unsigned char r0;
+    unsigned char g0;
+    unsigned char b0;
+    unsigned char code;
+    signed short x0;
+    signed short y0;
+    unsigned char r1;
+    unsigned char g1;
+    unsigned char b1;
+    unsigned char p1;
+    signed short x1;
+    signed short y1;
+};
+
+struct _BASIC_G4 {
+    unsigned char r0;
+    unsigned char g0;
+    unsigned char b0;
+    unsigned char code;
+    signed short x0;
+    signed short y0;
+    unsigned char r1;
+    unsigned char g1;
+    unsigned char b1;
+    unsigned char pad1;
+    signed short x1;
+    signed short y1;
+    unsigned char r2;
+    unsigned char g2;
+    unsigned char b2;
+    unsigned char pad2;
+    signed short x2;
+    signed short y2;
+    unsigned char r3;
+    unsigned char g3;
+    unsigned char b3;
+    unsigned char pad3;
+    signed short x3;
+    signed short y3;
+};
+
+struct _BASIC_F4 {
+    unsigned char r0;
+    unsigned char g0;
+    unsigned char b0;
+    unsigned char code;
+    signed short x0;
+    signed short y0;
+    signed short x1;
+    signed short y1;
+    signed short x2;
+    signed short y2;
+    signed short x3;
+    signed short y3;
+};
+
 
 
 #endif

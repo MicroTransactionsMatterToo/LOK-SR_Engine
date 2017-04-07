@@ -189,7 +189,7 @@ typedef struct ObjectFunc {
     void (*messageFunc)();
     void (*additionalCollideFunc)();
     void (*relocateTuneFunc)();
-    void (*relocateInstObjFunc)();
+    void (*relocateInstObFunc)();
 } ObjectFunc;
 
 #endif
