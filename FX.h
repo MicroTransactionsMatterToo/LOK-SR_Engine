@@ -341,7 +341,7 @@ typedef struct _FXFlash {
     long timeFromColor;
     long currentTime;
     long color;
-} FXFLash;
+} FXFlash;
 
 typedef struct FXSplinter {
     signed short flags;
