@@ -33,6 +33,7 @@ typedef struct XAVoiceTracker {
     VoiceCommand voiceCmdQueue[];
     unsigned char cdCmdIn;
     unsigned char cdCmdOut;
+    unsigned char cdCmdsQueue;
     unsigned char reqIn;
     unsigned char reqOut;
     unsigned char reqsQueued;

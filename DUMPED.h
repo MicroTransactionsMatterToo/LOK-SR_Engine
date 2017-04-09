@@ -4545,7 +4545,7 @@ struct XAVoiceTracker {
   unsigned char cdCmdOut;
   unsigned char cdCmdsQueued;
   unsigned char reqIn;
-  unsigned char reqOut;
+  uncsigned char reqOut;
   unsigned char reqsQueued;
   unsigned char voiceCmdIn;
   unsigned char voiceCmdOut;
