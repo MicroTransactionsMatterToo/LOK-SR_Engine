@@ -143,7 +143,7 @@ typedef struct _GenericBlastringParams {
     signed short type;
     signed short lifeTime;
     signed short matrixSeg;
-    signed short segment
+    signed short segment;
     SVector offset;
     signed short sortInWorld;
     signed short radius;
@@ -263,7 +263,85 @@ typedef struct _FXParticle {
     signed char endSegment;
     signed short startFadeValue;
     signed short fadeStep;
-};
+} FXParticle;
+
+typedef struct _FXLightBeam {
+    void* next;
+    void* continue_process;
+    Instance* instance;
+    unsigned char effectType;
+    unsigned char type;
+    signed short lifeTime;
+    signed short startSeg;
+    signed short endSeg;
+    long color;
+} FXLightBeam;
+
+typedef struct _FXBlastringEffect {
+    void* next;
+    void* continue_process;
+    Instance* instance;
+    unsigned char effectType;
+    unsigned char type;
+    signed short lifeTime;
+    SVector position;
+    struct MATRIX matrix;
+    signed short segment;
+    signed short pad;
+    unsigned int radius;
+    unsigned int size1;
+    unsigned int size2;
+    unsigned int endRadius;
+    unsigned int colorchange_radius;
+    unsigned int vel;
+    unsigned int accl;
+    unsigned int height1;
+    unsigned int height2;
+    unsigned int height3;
+    signed short predator_offset;
+    signed short sortInWorld;
+    long color;
+    long startColor;
+    long endColor;
+} FXBlastringEffect;
+
+typedef struct _FXLightning {
+    void* next;
+    void* continue_process;
+    struct _Instance* instance;
+    unsigned char effectType;
+    unsigned char type;
+    signed short lifeTime;
+    signed short deg;
+    signed short deg_inc;
+    struct _Position start_offset;
+    signed short startSeg;
+    struct _Instance* end_instance;
+    struct _Position end_offset;
+    signed short endSeg;
+    signed short matrixSeg;
+    signed short width;
+    signed short small_width;
+    signed short segs;
+    signed short sine_size;
+    signed short variation;
+    long color;
+    long glow_color;
+} FXLightning;
+
+typedef struct _FXFlash {
+    void* next;
+    void* continue_process;
+    Instance* instance;
+    unsigned char effectType;
+    unsigned char type;
+    signed short lifeTime;
+    long timeToColor;
+    long timeAtColor;
+    long timeFromColor;
+    long currentTime;
+    long color;
+} FXFLash;
 
 typedef struct FXSplinter {
     signed short flags;
